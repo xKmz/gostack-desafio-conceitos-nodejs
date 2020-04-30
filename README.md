@@ -29,7 +29,7 @@
 
 Essa será uma aplicação para armazenar repositórios do seu portfólio, que irá permitir a criação, listagem, atualização e remoção dos repositórios, e além disso permitir que os repositórios possam receber "likes".
 
-### Executando o ambbiente
+### Executando o ambiente
 
 Se você deseja baixar e testar o ambiente na sua máquina, basta seguir os passos:
 
