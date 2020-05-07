@@ -12,17 +12,31 @@ const repositories = [];
 
 function validateRepositoryId(request, response, next) {
   const { id } = request.params;
-
+  
   if (!isUuid(id)) {
     return response.status(400).json({ 
       error: 'Invalid project ID'
     });
   }
-
+  
   return next();
 }
 
-app.use('/repositories/:id', validateRepositoryId);
+function repositoryIdExists(request, response, next) {
+  const { id } = request.params;
+
+  const idExists = repositories.find(repo => repo.id === id);
+
+  if (!idExists) {
+    return response.status(400).json({ 
+      error: 'Invalid project ID'
+    });
+  }
+  
+  return next();
+}
+
+app.use('/repositories/:id', validateRepositoryId, repositoryIdExists);
 
 app.get("/repositories", (request, response) => {
   return response.json(repositories);
